@@ -16,7 +16,70 @@ function Ply_Up(){
         Super_I = Img;
         Super_I.scaleToWidth(150);
         Super_I.scaleToHeight(140);
-        Super_I.set({top: Super_Y, left: Super_X});
+        Super_I.set({
+            top: Super_Y, left: Super_X
+        });
         Canvas.add(Super_I);
     });
+}
+
+function New_Img(Get_Img){
+    fabric.Image.fromURL(Get_Img, function(Img){
+        Super_BI = Img;
+        Super_BI.scaleToWidth(S_Width);
+        Super_BI.scaleToHeight(S_Height);
+        Super_BI.set({
+            top: Super_Y,
+            left: Super_X
+        });
+        Canvas.add(Super_BI);
+    });
+}
+
+window.addEventListener("keydown", My_Keys);
+
+function My_Keys(){
+    keyPressed = e.keyCode;
+    if(keyPressed=="70"){
+        New_Img("ironman_face.png");
+        console.log("Face");
+    }
+    if(keyPressed=="76"){
+        New_Img("ironman_left_hand.png");
+        console.log("Left Hand");
+    }
+    if(keyPressed=="82"){
+        New_Img("ironman_right_hand.png");
+        console.log("Right Hand");
+    }
+    if(keyPressed=="66"){
+        New_Img("ironman_body.png");
+        console.log("Body");
+    }
+    if(keyPressed=="72"){
+        New_Img("ironman_legs.png");
+        console.log("Legs");
+    }
+    if(keyPressed=="38"){
+        Ply_Up()
+        Up();
+        console.log("Up");
+    }
+    if(keyPressed=="40"){
+        Ply_Up()
+        Down();
+        console.log("Down");
+    }
+    if(keyPressed=="39"){
+        Ply_Up()
+        Right();
+        console.log("Right");
+    }
+    if(e.shiftKey== true && keyPressed=="80"){
+        console.log("Maximize");
+        S_Width = S_Width + 10;
+        S_Height = S_Height + 10;
+        document.getElementById("C_W").innerHTML = S_Width;
+        document.getElementById("C_H").innerHTML = S_Height;
+    }
 }
